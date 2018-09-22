@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		710A82A63E3C298754DE4311 /* Pods_openweathertest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0CE53364E040E41F25DB022 /* Pods_openweathertest.framework */; };
+		ED04FAB421564676005EA7FC /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED04FAB321564676005EA7FC /* CityModel.swift */; };
+		ED04FAB921564ABB005EA7FC /* CityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED04FAB821564ABB005EA7FC /* CityManager.swift */; };
+		ED04FABB21564B3C005EA7FC /* city-list.json in Resources */ = {isa = PBXBuildFile; fileRef = ED04FABA21564B3C005EA7FC /* city-list.json */; };
 		ED77490E215633F500E16BBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED77490D215633F500E16BBF /* AppDelegate.swift */; };
 		ED774910215633F500E16BBF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED77490F215633F500E16BBF /* ViewController.swift */; };
 		ED774913215633F500E16BBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED774911215633F500E16BBF /* Main.storyboard */; };
@@ -19,6 +22,9 @@
 		3E01E9DBBD81BC52FDEA2D68 /* Pods-openweathertest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-openweathertest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-openweathertest/Pods-openweathertest.debug.xcconfig"; sourceTree = "<group>"; };
 		BE42568321CD3D36CCE17376 /* Pods-openweathertest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-openweathertest.release.xcconfig"; path = "Pods/Target Support Files/Pods-openweathertest/Pods-openweathertest.release.xcconfig"; sourceTree = "<group>"; };
 		E0CE53364E040E41F25DB022 /* Pods_openweathertest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_openweathertest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED04FAB321564676005EA7FC /* CityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
+		ED04FAB821564ABB005EA7FC /* CityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityManager.swift; sourceTree = "<group>"; };
+		ED04FABA21564B3C005EA7FC /* city-list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "city-list.json"; sourceTree = "<group>"; };
 		ED77490A215633F500E16BBF /* openweathertest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = openweathertest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED77490D215633F500E16BBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED77490F215633F500E16BBF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +63,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		ED04FAB22156465E005EA7FC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ED04FAB321564676005EA7FC /* CityModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		ED04FAB721564AA7005EA7FC /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				ED04FAB821564ABB005EA7FC /* CityManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		ED774901215633F500E16BBF = {
 			isa = PBXGroup;
 			children = (
@@ -79,9 +101,12 @@
 			isa = PBXGroup;
 			children = (
 				ED77490D215633F500E16BBF /* AppDelegate.swift */,
+				ED04FAB22156465E005EA7FC /* Models */,
 				ED77490F215633F500E16BBF /* ViewController.swift */,
+				ED04FAB721564AA7005EA7FC /* Managers */,
 				ED774911215633F500E16BBF /* Main.storyboard */,
 				ED774914215633F800E16BBF /* Assets.xcassets */,
+				ED04FABA21564B3C005EA7FC /* city-list.json */,
 				ED774916215633F800E16BBF /* LaunchScreen.storyboard */,
 				ED774919215633F800E16BBF /* Info.plist */,
 			);
@@ -149,6 +174,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ED774918215633F800E16BBF /* LaunchScreen.storyboard in Resources */,
+				ED04FABB21564B3C005EA7FC /* city-list.json in Resources */,
 				ED774915215633F800E16BBF /* Assets.xcassets in Resources */,
 				ED774913215633F500E16BBF /* Main.storyboard in Resources */,
 			);
@@ -183,10 +209,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-openweathertest/Pods-openweathertest-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -200,8 +228,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED04FAB921564ABB005EA7FC /* CityManager.swift in Sources */,
 				ED774910215633F500E16BBF /* ViewController.swift in Sources */,
 				ED77490E215633F500E16BBF /* AppDelegate.swift in Sources */,
+				ED04FAB421564676005EA7FC /* CityModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
