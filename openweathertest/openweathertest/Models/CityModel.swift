@@ -15,6 +15,7 @@ struct CityModel {
     var country: String
     var lonCoord: Int
     var latCoord: Int
+    var weathersForFiveDays: [[WeatherModel]]?
     
     
     init(id: Int, name: String, country: String, lonCoord: Int, latCoord: Int) {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import OpenWeatherKit
 
 class CitiesViewController: UIViewController {
 
@@ -15,6 +16,7 @@ class CitiesViewController: UIViewController {
     @IBOutlet weak var locationBarButton: UIBarButtonItem!
     
     var trackedCities = CityManager.shared.trackedCities
+    var forecasts = [Forecast]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,13 +25,14 @@ class CitiesViewController: UIViewController {
 
     @IBAction func addCityAction(_ sender: Any) {
         let addCityVC = AddCityViewController.instance()
+        addCityVC.cityDelegate = self
         navigationController?.pushViewController(addCityVC, animated: true)
     }
 }
 
 extension CitiesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return trackedCities.count
+        return forecasts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -37,11 +40,26 @@ extension CitiesViewController: UICollectionViewDelegate, UICollectionViewDataSo
             return UICollectionViewCell()
         }
         
+        cell.cityNameLabel.text = forecasts[indexPath.row].city.name
+        let minTemp = Int(forecasts[indexPath.row].list.first!.main.tempMin - 273)
+        let maxTemp = Int(forecasts[indexPath.row].list.first!.main.tempMax - 273)
+        cell.tempLabel.text = "\(minTemp)/\(maxTemp)ºC"
+        let icon = forecasts[indexPath.row].list.first!.weather.first?.icon
+        cell.weatherImage.image = WeatherManager.shared.getIcon(for: icon!)
         
         
         return cell
     }
     
     
+}
+
+extension CitiesViewController: CityDelegate {
+    func send(city: CityModel) {
+        WeatherManager.shared.loadForecast(by: city) { (forecast) in
+            self.forecasts.append(forecast)
+            self.collectionView.reloadData()
+        }
+    }
 }
 

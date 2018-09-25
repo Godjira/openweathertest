@@ -9,11 +9,16 @@
 import Foundation
 import UIKit
 
+protocol CityDelegate {
+    func send(city: CityModel)
+}
+
 class AddCityViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
+    var cityDelegate: CityDelegate?
     
     var sortCities: [(key: String, value: [CityModel])]?
     var filteredCities: [CityModel]?
@@ -30,7 +35,7 @@ extension AddCityViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText != "" {
-            filteredCities = CityManager.shared.cities?.filter { $0.name.contains(searchText) }
+            filteredCities = CityManager.shared.cities.filter { $0.name.contains(searchText) }
         } else {
             filteredCities = nil
         }
@@ -51,10 +56,10 @@ extension AddCityViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         if filteredCities != nil {
             let city = filteredCities![indexPath.row]
-            CityManager.shared.add(trackedCity: city)
+            cityDelegate?.send(city: city)
         } else {
             let city = sortCities![indexPath.section].value[indexPath.row]
-            CityManager.shared.add(trackedCity: city)
+            cityDelegate?.send(city: city)
         }
         navigationController?.popViewController(animated: true)
     }

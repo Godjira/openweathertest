@@ -12,22 +12,17 @@ import SwiftyJSON
 class CityManager {
     
     init() {}
-    
     static let shared = CityManager()
     
-    var cities: [CityModel]?
+    var cities = [CityModel]()
     var sortCities: [(key: String, value: [CityModel])]?
     
     var trackedCities = [CityModel]()
     
     func add(trackedCity: CityModel) {
-        
-        for tCity in trackedCities {
-            if tCity.id == trackedCity.id {
+        for tCity in trackedCities where tCity.id == trackedCity.id {
                 return
-            }
         }
-        
         trackedCities.append(trackedCity)
     }
     
@@ -62,8 +57,17 @@ class CityManager {
         self.sortCities = sortDictinary
     }
     
+    func getCity(by id: Int) -> CityModel? {
+        for city in trackedCities where city.id == id {
+            return city
+        }
+        for city in cities where city.id == id {
+            return city
+        }
+        return nil
+    }
+    
     func printList() {
-        
         for (key, value) in sortCities! {
             print("Key: \(key), value: \(value.first?.name)")
         }
