@@ -28,11 +28,16 @@ class DetailCityViewController: UIViewController {
 
 extension DetailCityViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return forecast!.list.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WeatherCollectionViewCell", for: indexPath) as? WeatherCollectionViewCell ?? WeatherCollectionViewCell()
+        
+        cell.setWeather(list: forecast!.list[indexPath.row])
+        
+        return cell
     }
     
     

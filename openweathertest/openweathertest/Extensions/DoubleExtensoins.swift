@@ -25,4 +25,9 @@ extension Double {
         return date
     }
     
+    func kelvinToCelsius() -> Double {
+        return self - 273
+    }
+    
 }
+

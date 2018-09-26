@@ -22,6 +22,7 @@
 		ED774915215633F800E16BBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED774914215633F800E16BBF /* Assets.xcassets */; };
 		ED774918215633F800E16BBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED774916215633F800E16BBF /* LaunchScreen.storyboard */; };
 		EDCB38C3215A209E0052F65E /* DetailCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCB38C2215A209E0052F65E /* DetailCityViewController.swift */; };
+		EDCB38E7215BDF880052F65E /* WeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDCB38E6215BDF880052F65E /* WeatherCollectionViewCell.swift */; };
 		EDD0C259215679FD00E4FB6E /* UIStoryboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD0C257215679FD00E4FB6E /* UIStoryboardExtensions.swift */; };
 		EDD0C25A215679FD00E4FB6E /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD0C258215679FD00E4FB6E /* UIViewControllerExtensions.swift */; };
 		EDD0C25D2156893900E4FB6E /* AddCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD0C25C2156893900E4FB6E /* AddCityViewController.swift */; };
@@ -47,6 +48,7 @@
 		ED774917215633F800E16BBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED774919215633F800E16BBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EDCB38C2215A209E0052F65E /* DetailCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCityViewController.swift; sourceTree = "<group>"; };
+		EDCB38E6215BDF880052F65E /* WeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCollectionViewCell.swift; sourceTree = "<group>"; };
 		EDD0C257215679FD00E4FB6E /* UIStoryboardExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIStoryboardExtensions.swift; sourceTree = "<group>"; };
 		EDD0C258215679FD00E4FB6E /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		EDD0C25C2156893900E4FB6E /* AddCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			children = (
 				ED19447F2157A40200657B2A /* CityCollectionViewCell.swift */,
 				ED5C43CE2157D3DA0002F8C1 /* CityTableViewCell.swift */,
+				EDCB38E6215BDF880052F65E /* WeatherCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				ED04FAB421564676005EA7FC /* CityModel.swift in Sources */,
 				EDCB38C3215A209E0052F65E /* DetailCityViewController.swift in Sources */,
 				ED1944802157A40200657B2A /* CityCollectionViewCell.swift in Sources */,
+				EDCB38E7215BDF880052F65E /* WeatherCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

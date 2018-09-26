@@ -41,14 +41,22 @@ extension CitiesViewController: UICollectionViewDelegate, UICollectionViewDataSo
         }
         
         cell.cityNameLabel.text = forecasts[indexPath.row].city.name
-        let minTemp = Int(forecasts[indexPath.row].list.first!.main.tempMin - 273)
-        let maxTemp = Int(forecasts[indexPath.row].list.first!.main.tempMax - 273)
+        let minTemp = Int(forecasts[indexPath.row].list.first!.main.tempMin.kelvinToCelsius())
+        let maxTemp = Int(forecasts[indexPath.row].list.first!.main.tempMax.kelvinToCelsius())
         cell.tempLabel.text = "\(minTemp)/\(maxTemp)ºC"
         let icon = forecasts[indexPath.row].list.first!.weather.first?.icon
         cell.weatherImage.image = WeatherManager.shared.getIcon(for: icon!)
         
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let detailVC = DetailCityViewController.instance()
+        detailVC.forecast = forecasts[indexPath.row]
+        navigationController?.pushViewController(detailVC, animated: true)
+        
     }
     
     
